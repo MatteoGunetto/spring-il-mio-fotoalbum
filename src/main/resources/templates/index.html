@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{frags :: html_head('Backoffice')}"></div>
+
+<body>
+<div th:replace="~{frags :: navbar}"></div>
+<div class="container">
+    <div class="row g-3 my-5">
+        <div class="col p-3 d-flex align-items-center justify-content-center">
+            <a href="/photos" type="button" class="btn btn-outline-dark py-5 w-100 h-100 rounded-0">
+                Foto
+            </a>
+        </div>
+        <div class="col p-3 d-flex align-items-center justify-content-center">
+            <a href="/categories" type="button" class="btn btn-outline-dark py-5 w-100 h-100 rounded-0">
+                Categorie
+            </a>
+        </div>
+        <div class="col p-3 d-flex align-items-center justify-content-center">
+            <a href="/messages" type="button" class="btn btn-outline-dark py-5 w-100 h-100 rounded-0">
+                Messaggi
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{frags :: html_head('Categories')}"></div>
+
+<body>
+<div th:replace="~{frags :: navbar}"></div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col d-flex justify-content-end align-items-center gap-2 my-3">
+            <a href="/categories/create" type="button" class="btn btn-dark rounded-0">Add new category</a>
+        </div>
+    </div>
+    <div class="row row-cols-3 g-3">
+        <div class="col" th:each="category : ${categories}">
+            <div class="card rounded-0 p-0 border-0 shadow" th:object="${category}">
+                <div class="card-body p-3">
+                    <h4 class="card-title">[[*{name}]]</h4>
+                    <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
+                        <a th:href="@{/categories/edit/{category_id}(category_id=*{id})}"
+                           class="text-decoration-none text-light bg-dark p-2">Edit</a>
+                        <form method="post" th:action="@{/categories/delete/{category_id}(category_id=*{id})}">
+                            <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

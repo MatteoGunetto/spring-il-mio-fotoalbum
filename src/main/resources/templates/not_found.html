@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="frags :: html_head('404 Not Found')"></div>
+
+<body>
+<div th:replace="~{frags :: navbar}"></div>
+<div class="vh-100 w-100 bg-dark d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-danger p-3 mb-5 border border-danger">404 | Not Found</h1>
+    <div class="d-flex justify-content-center align-items-center gap-3">
+        <a href="/photos" type="button" class="btn btn-outline-light rounded-0">Foto</a>
+        <a href="/categories" type="button" class="btn btn-outline-light rounded-0">Categorie</a>
+    </div>
+</div>
+</body>
+
+</html>

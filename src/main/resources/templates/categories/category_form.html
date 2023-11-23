@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{frags :: html_head(${category.id} == 0 ? 'Create' : 'Edit')}"></div>
+
+<body>
+<div th:replace="~{frags :: navbar}"></div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center w-100">
+                [[${category.id == 0 ? 'Create' : 'Update'}]]
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form method="post" th:object="${category}">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control rounded-0" name="name" id="name"
+                           aria-describedby="nameHelpId" placeholder="lorem" th:field="*{name}">
+                    <small id="nameHelpId" class="form-text text-muted">Type the name of the category</small>
+                </div>
+                <div class="d-flex w-100 justify-content-end align-items-center gap-2">
+                    <button type="submit" class="btn btn-outline-dark rounded-0">
+                        [[${category.id == 0 ? 'Create' : 'Update'}]]
+                    </button>
+                    <button type="reset" class="btn btn-outline-dark rounded-0">Reset</button>
+                    <a type="button" href="/categories" class="btn btn-outline-dark rounded-0">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

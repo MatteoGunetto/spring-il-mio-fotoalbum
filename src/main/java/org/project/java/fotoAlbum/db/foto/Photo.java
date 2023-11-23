@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
+import org.project.java.fotoAlbum.api.dto.PhotoDto;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -45,6 +47,12 @@ public class Photo {
         setUrl(url);
         setVisible(visible);
         setCategories(Arrays.asList(categories));
+    }
+    public Photo(PhotoDto photo) {
+        setTitle(photo.getTitle());
+        setDescription(photo.getDescription());
+        setUrl(photo.getUrl());
+        setVisible(photo.isVisible());
     }
 
     public int getId() {
@@ -112,6 +120,13 @@ public class Photo {
 
     public void removeCategories(Category... categories) {
         getCategories().removeAll(Arrays.asList(categories));
+    }
+
+    public void fillFromPhotoDto(PhotoDto photoDto) {
+        setTitle(photoDto.getTitle());
+        setDescription(photoDto.getDescription());
+        setUrl(photoDto.getUrl());
+        setVisible(photoDto.isVisible());
     }
 
     @Override
