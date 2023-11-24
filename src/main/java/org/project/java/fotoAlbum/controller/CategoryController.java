@@ -50,16 +50,20 @@ public class CategoryController {
 
     @PostMapping("/create")
     public String categories_store(Model model,
-                                    @Valid @ModelAttribute Category category,
+                                   @Valid @ModelAttribute Category category,
                                    BindingResult bindingResult) {
 
         categoryService.save(category);
-        List<Photo> photos = category.getPhotos();
-        for(Photo photo : photos) {
-            photo.addCategories(category);
+
+        // Verifica se la lista di photos è nulla prima di iterare
+        if (category.getPhotos() != null) {
+            List<Photo> photos = category.getPhotos();
+            for(Photo photo : photos) {
+                photo.addCategories(category);
+            }
         }
 
-        return "photos/photos_index";
+        return "redirect:/categories";
     }
 
     @GetMapping("/edit/{category_id}")
