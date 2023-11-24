@@ -28,7 +28,7 @@ public class PhotoService {
     }
 
     public List<Photo> findByTitle(String title){
-        return photoRepo.findByTitle(title);
+        return photoRepo.findByTitleContaining(title);
     }
 
     public List<Photo> findByUserAndTitle(User user, String title){

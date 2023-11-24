@@ -26,9 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/photos")
 public class PhotoRestController {
-
     @Autowired
     private PhotoService photoService;
 
@@ -38,18 +37,20 @@ public class PhotoRestController {
         return new ResponseEntity<List<Photo>>(photos, HttpStatus.OK);
     }
 
-    @GetMapping("/filtered/{filter}")
-    public ResponseEntity<List<Photo>> fetchFilteredPhotos(@PathVariable String filter) {
+    @GetMapping("/filter/{filter}")
+    public ResponseEntity<List<Photo>> fetchFilteredPhotos(@PathVariable String filter){
         List<Photo> photos = photoService.findByTitle(filter);
-        return new ResponseEntity<>(photos, HttpStatus.OK);
+        return new ResponseEntity<List<Photo>>(photos, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Integer> savePhoto(@RequestBody PhotoDto photoDto) {
+    public ResponseEntity<Integer> savePhoto(@RequestBody PhotoDto photoDto){
         Photo photo = new Photo(photoDto);
         photo = photoService.save(photo);
+
         return new ResponseEntity<>(photo.getId(), HttpStatus.OK);
     }
+
     @GetMapping("{id}")
     public ResponseEntity<Photo> fetchPhoto(@PathVariable int id){
         Optional<Photo> photoOpt = photoService.findById(id);

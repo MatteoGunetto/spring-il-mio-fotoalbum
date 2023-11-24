@@ -42,7 +42,7 @@ public class CategoryController {
         List<Photo> photos = photoService.findAll();
         Category category = new Category();
 
-        model.addAttribute("photos", photos);
+        model.addAttribute("photo", photos);
         model.addAttribute("category", category);
 
         return "categories/category_form";
@@ -51,7 +51,7 @@ public class CategoryController {
     @PostMapping("/create")
     public String categories_store(Model model,
                                     @Valid @ModelAttribute Category category,
-                                    BindingResult bindingResult) {
+                                   BindingResult bindingResult) {
 
         categoryService.save(category);
         List<Photo> photos = category.getPhotos();
@@ -59,7 +59,7 @@ public class CategoryController {
             photo.addCategories(category);
         }
 
-        return "redirect:/categories";
+        return "photos/photos_index";
     }
 
     @GetMapping("/edit/{category_id}")
