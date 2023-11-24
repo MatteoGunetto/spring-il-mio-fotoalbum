@@ -33,9 +33,9 @@ public class PhotoRestController {
     private PhotoService photoService;
 
     @GetMapping
-    public ResponseEntity<List<Photo>> fetchAllPhotos() {
-        List<Photo> photos = photoService.findAll();
-        return new ResponseEntity<>(photos, HttpStatus.OK);
+    public ResponseEntity<List<Photo>> fetchAllPhotos(){
+        List<Photo> photos = photoService.findByVisibility();
+        return new ResponseEntity<List<Photo>>(photos, HttpStatus.OK);
     }
 
     @GetMapping("/filtered/{filter}")

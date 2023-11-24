@@ -14,16 +14,18 @@ public class AuthConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeHttpRequests()
-                .requestMatchers("/photos").hasAuthority("ADMIN")
-                .requestMatchers("/photos/create").hasAuthority("ADMIN")
-                .requestMatchers("/photos/edit/**").hasAuthority("ADMIN")
-                .requestMatchers("/photos/update/**").hasAuthority("ADMIN")
-                .requestMatchers("/photos/delete/**").hasAuthority("ADMIN")
+                .requestMatchers("/").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/photos").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/photos/create").hasAuthority("USER")
+                .requestMatchers("/photos/edit/**").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/photos/update/**").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/photos/delete/**").hasAuthority("USER")
                 .requestMatchers("/categories").hasAuthority("ADMIN")
                 .requestMatchers("/categories/create").hasAuthority("ADMIN")
                 .requestMatchers("/categories/edit/**").hasAuthority("ADMIN")
                 .requestMatchers("/categories/update/**").hasAuthority("ADMIN")
                 .requestMatchers("/categories/delete/**").hasAuthority("ADMIN")
+                .requestMatchers("/messages").hasAuthority("ADMIN")
                 .requestMatchers("/**").permitAll()
                 .and().formLogin().defaultSuccessUrl("/")
                 .and().logout();

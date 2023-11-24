@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 
 <div th:replace="~{frags :: html_head('Photos')}"></div>
-
 <body>
 <div th:replace="~{frags :: navbar}"></div>
 <div class="container my-5">
-    <div class="row">
+    <div class="row" sec:authorize="hasAuthority('USER')">
         <div class="col d-flex justify-content-end align-items-center gap-2 my-3">
             <a href="/photos/create" type="button" class="btn btn-dark rounded-0">Add new photo</a>
         </div>
     </div>
     <div class="row row-cols-3 g-3">
-        <div class="col" th:each="photo : ${photos}">
-            <div class="card rounded-0 p-0 border-0 shadow" th:object="${photo}">
-                <img class="card-img-top object-fit-cover rounded-0" height="400" width="300" th:src="*{url}"
+        <div class="col-12 col-md-6 col-lg-4" th:each="photo : ${photos}">
+            <div class="card h-100 rounded-0 p-0 border-0 shadow" th:object="${photo}">
+                <img class="card-img-top object-fit-cover rounded-0" height="250" width="250" th:src="*{url}"
                      th:alt="*{title}">
-                <div class="card-body p-3">
-                    <h4 class="card-title">[[*{title}]]</h4>
-                    <p class="card-text">[[*{description}]]</p>
-                    <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 mb-4">
-                        <div class="badge badge-dark bg-dark rounded-0" th:each="category : *{categories}"
-                             th:object="${category}">
-                            [[*{name}]]
+                <div class="card-body p-3 d-flex flex-column justify-content-between">
+                    <div	>
+                        <h4 class="card-title">[[*{title}]]</h4>
+                        <p class="card-text">[[*{description}]]</p>
+                        <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 mb-4">
+                            <div class="badge badge-dark bg-dark rounded-0" th:each="category : *{categories}"
+                                 th:object="${category}">
+                                [[*{name}]]
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-wrap justify-content-end align-items-center gap-2">
-                        <a href="#" class="text-decoration-none text-light bg-dark p-2">Show on front office</a>
+                    <div class="align-self-end d-flex flex-wrap justify-content-end align-items-center gap-2">
                         <a th:href="@{/photos/update/{photo_id}(photo_id=*{id})}"
-                           class="text-decoration-none text-light bg-dark p-2">Edit</a>
+                           class="text-decoration-none text-light bg-dark p-2"
+                           sec:authorize="hasAnyAuthority('ADMIN', 'USER')">Edit</a>
                         <form method="post" th:action="@{/photos/delete/{photo_id}(photo_id=*{id})}">
-                            <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                            <button type="submit" class="btn btn-danger rounded-0"
+                                    sec:authorize="hasAuthority('USER')">Delete</button>
                         </form>
                     </div>
                 </div>
@@ -39,5 +41,4 @@
     </div>
 </div>
 </body>
-
 </html>
