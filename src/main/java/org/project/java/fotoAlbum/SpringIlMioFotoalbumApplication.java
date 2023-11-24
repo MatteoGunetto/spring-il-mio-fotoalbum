@@ -8,6 +8,11 @@ import org.project.java.fotoAlbum.db.serv.CategoryService;
 import org.project.java.fotoAlbum.db.serv.PhotoService;
 import org.project.java.fotoAlbum.db.serv.RoleService;
 import org.project.java.fotoAlbum.db.serv.UserService;
+import org.project.java.fotoAlbum.db.foto.Message;
+import org.project.java.fotoAlbum.db.serv.MessageService;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +33,9 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private MessageService messageService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringIlMioFotoalbumApplication.class, args);
@@ -99,6 +107,14 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 
 		System.out.println("----------------------------");
 		System.out.println("Photos loading.");
+
+
+
+		Message m1 = new Message("test@email.com", "lorem ipsum dolor amet");
+		Message m2 = new Message("test2@email.com", "lorem ipsum dolor amet 2");
+
+		messageService.save(m1);
+		messageService.save(m2);
 
 		System.out.println("----------------------------");
 		System.out.println("complete .");

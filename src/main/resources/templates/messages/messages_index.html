@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{frags :: html_head('Messages')}"></div>
+
+<body>
+<div th:replace="~{frags :: navbar}"></div>
+<div class="container my-5">
+    <div class="row row-cols-3 g-3">
+        <div class="col" th:each="message : ${messages}">
+            <div class="card rounded-0 p-0 border-0 shadow" th:object="${message}">
+                <div class="card-body p-3">
+                    <h4 class="card-title">[[*{email}]]</h4>
+                    <p>[[*{message}]]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
