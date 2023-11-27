@@ -1,0 +1,97 @@
+@use "./variables.scss" as *;
+
+.text_dark {
+    color: $ms-dark;
+}
+
+.text_light {
+    color: $ms-light;
+}
+
+.text_primary {
+    color: $ms-primary;
+}
+
+.text_accent {
+    color: $ms-accent;
+}
+
+.text_danger {
+    color: $ms-danger;
+}
+
+.text_warning {
+    color: $ms-warning;
+}
+
+.text_success {
+    color: $ms-success;
+}
+
+.text_muted {
+    color: $ms-gray;
+}
+
+.bg_dark {
+    background-color: $ms-dark;
+}
+
+.bg_light {
+    background-color: $ms-light;
+}
+
+.bg_primary {
+    background-color: $ms-primary;
+}
+
+.bg_accent {
+    background-color: $ms-accent;
+}
+
+.bg_danger {
+    background-color: $ms-danger;
+}
+
+.bg_warning {
+    background-color: $ms-warning;
+}
+
+.bg_success {
+    background-color: $ms-success;
+}
+
+.bg_muted {
+    background-color: $ms-gray;
+}
+
+.fill_dark {
+    fill: $ms-dark;
+}
+
+.fill_light {
+    fill: $ms-light;
+}
+
+.fill_primary {
+    fill: $ms-primary;
+}
+
+.fill_accent {
+    fill: $ms-accent;
+}
+
+.fill_danger {
+    fill: $ms-danger;
+}
+
+.fill_warning {
+    fill: $ms-warning;
+}
+
+.fill_success {
+    fill: $ms-success;
+}
+
+.fill_muted {
+    fill: $ms-gray;
+}

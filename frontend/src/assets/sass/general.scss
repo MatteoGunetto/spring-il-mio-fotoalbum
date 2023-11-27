@@ -1,0 +1,81 @@
+@use "./variables.scss" as *;
+@use "./common.scss" as *;
+
+.main_background {
+    background-color: rgba($ms-gray, 0.3);
+    min-height: 100vh;
+}
+
+.btn_primary {
+    background-color: $ms-primary !important;
+    color: $ms-light !important;
+    &:hover {
+        background-color: $ms-accent !important;
+        color: $ms-dark !important;
+    }
+}
+
+.btn_dark {
+    background-color: $ms-dark !important;
+    color: $ms-light !important;
+}
+
+.btn_light {
+    background-color: $ms-light !important;
+    color: $ms-dark !important;
+}
+
+.btn_danger {
+    background-color: $ms-danger !important;
+    color: $ms-light !important;
+}
+
+.user_input {
+    background-color: $ms-light;
+    border: 2px solid $ms-light !important;
+    &:focus {
+        box-shadow: none !important;
+        border: 2px solid $ms-primary !important;
+    }
+}
+
+input[type="checkbox"].user_input_checkbox {
+    appearance: none;
+    background: $ms-light !important;
+    border: 1px solid $ms-primary !important;
+    padding: 0.5rem;
+    &:checked {
+        background: $ms-accent !important;
+        border: 1px solid $ms-accent !important;
+        padding: 0.5rem;
+        position: relative;
+        &::before {
+            content: "\2713";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 100;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: $ms-light;
+        }
+    }
+}
+
+input[type="radio"].user_input_radio {
+    appearance: none;
+    background-color: $ms-light;
+    border: 1px solid $ms-primary !important;
+    padding: 0.3rem;
+    &::before {
+        content: "";
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: $ms-light;
+        &:checked {
+            background-color: $ms-accent;
+        }
+    }
+}

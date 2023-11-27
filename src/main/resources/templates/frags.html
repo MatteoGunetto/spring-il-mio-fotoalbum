@@ -2,7 +2,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>[[${title}]]</title>
 </head>
 <div th:fragment="login" class="col d-flex justify-content-end align-items-center py-3 gap-2">
@@ -15,7 +14,7 @@
         <a href="/login" type="button" class="btn btn-outline-light rounded-0 text-uppercase">LOGIN</a>
     </span>
     <span>
-		<a href="http://localhost:5173" type="button" class="btn btn-outline-light rounded-0 text-uppercase">Frontoffice</a>
+		<a href="http://localhost:5173" type="button" class="btn btn-outline-light rounded-0 text-uppercase">HomePage</a>
    	</span>
 </div>
 
@@ -25,7 +24,6 @@
             <div class="col">
                 <a href="/" class="text-decoration-none text-light fs-3 fw-bold text-uppercase">
                     My photo album
-                    <span class="fw-light text-lowercase">| test</span>
                 </a>
             </div>
             <div th:replace="~{frags :: login}"></div>
